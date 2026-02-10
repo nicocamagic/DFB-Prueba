@@ -27,6 +27,7 @@ if (!get("config")) {
 
 /********* CONFIG *********/
 
+// Accesos directos
 document.addEventListener("keydown", (e) => {
   if (e.ctrlKey && e.key.toLowerCase() === "m") {
     console.log("DEBUG: Settings abierto (PC)");
@@ -34,11 +35,51 @@ document.addEventListener("keydown", (e) => {
   }
 });
 
-// Botón de menú del teléfono para abrir settings
-document.addEventListener("menubutton", () => {
-  console.log("DEBUG: Settings abierto (Teléfono)");
-  go("settings.html");
-});
+/********* GESTOS TÁCTILES *********/
+let touchStartX = 0;
+let touchStartY = 0;
+
+document.addEventListener(
+  "touchstart",
+  (e) => {
+    touchStartX = e.changedTouches[0].screenX;
+    touchStartY = e.changedTouches[0].screenY;
+  },
+  { passive: true },
+);
+
+document.addEventListener(
+  "touchend",
+  (e) => {
+    const touchEndX = e.changedTouches[0].screenX;
+    const touchEndY = e.changedTouches[0].screenY;
+    handleGesture(touchStartX, touchStartY, touchEndX, touchEndY);
+  },
+  { passive: true },
+);
+
+function handleGesture(startX, startY, endX, endY) {
+  const diffX = endX - startX;
+  const diffY = endY - startY;
+
+  // Solo procesar si el movimiento horizontal es mayor que el vertical
+  if (Math.abs(diffX) > Math.abs(diffY)) {
+    // Swipe desde el borde derecho hacia la izquierda
+    if (startX > window.innerWidth - 100 && diffX < -50) {
+      console.log("DEBUG: Swipe derecho -> Settings");
+      go("settings.html");
+    }
+
+    // Swipe desde el borde izquierdo hacia la derecha (volver)
+    if (startX < 100 && diffX > 50) {
+      const currentPage = window.location.pathname.split("/").pop();
+      if (currentPage === "settings.html") {
+        console.log("DEBUG: Swipe izquierdo <- Volver");
+        go("index.html");
+      }
+    }
+  }
+}
 
 /********* THEME *********/
 function applyTheme() {
