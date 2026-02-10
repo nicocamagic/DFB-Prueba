@@ -3,7 +3,7 @@
   <head>
     <meta charset="UTF-8" />
     <title>Settings</title>
-    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" href="./css/style.css" />
   </head>
   <body class="dark" onload="applyTheme()">
     <h3>Número forzado</h3>
@@ -37,7 +37,7 @@
     <br /><br />
     <button onclick="go('index.html')">Cerrar</button>
 
-    <script src="js/app.js"></script>
+    <script src="./js/app.js"></script>
     <script>
       const input = document.getElementById("forcedNumber");
       input.value = get("config").forcedNumber;
