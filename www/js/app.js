@@ -16,7 +16,7 @@ function set(key, value) {
 document.addEventListener("keydown", (e) => {
   if (e.ctrlKey && e.key.toLowerCase() === "m") {
     console.log("DEBUG: Settings abierto (PC)");
-    go("settings.html");
+    go("../settings.html");
   }
 });
 
@@ -25,16 +25,6 @@ function applyTheme() {
   const cfg = get("config");
   document.body.classList.remove("dark", "light");
   document.body.classList.add(cfg.theme || "dark");
-}
-
-function applyBackground() {
-  const cfg = get("config");
-  if (cfg.background) {
-    document.body.style.backgroundImage = `url(${cfg.background})`;
-    document.body.style.backgroundSize = "cover";
-  } else {
-    document.body.style.backgroundImage = "";
-  }
 }
 
 /********* NOTES *********/
