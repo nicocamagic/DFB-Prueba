@@ -34,6 +34,12 @@ document.addEventListener("keydown", (e) => {
   }
 });
 
+// Botón de menú del teléfono para abrir settings
+document.addEventListener("menubutton", () => {
+  console.log("DEBUG: Settings abierto (Teléfono)");
+  go("settings.html");
+});
+
 /********* THEME *********/
 function applyTheme() {
   const cfg = get("config") || { theme: "dark" };
