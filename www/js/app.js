@@ -16,7 +16,7 @@ function set(key, value) {
 document.addEventListener("keydown", (e) => {
   if (e.ctrlKey && e.key.toLowerCase() === "m") {
     console.log("DEBUG: Settings abierto (PC)");
-    go("../settings.html");
+    go("settings.html");
   }
 });
 
