@@ -11,6 +11,20 @@ function set(key, value) {
   localStorage.setItem(key, JSON.stringify(value));
 }
 
+/********* INICIALIZACIÓN *********/
+// Crear configuración por defecto si no existe
+if (!get("config")) {
+  set("config", {
+    theme: "dark",
+    showNumbers: true,
+    centerForce: false,
+    forcedNumber: 1,
+    forcedWord: "",
+    fakeText: "No hay nota seleccionada",
+    background: null,
+  });
+}
+
 /********* CONFIG *********/
 
 document.addEventListener("keydown", (e) => {
@@ -22,7 +36,7 @@ document.addEventListener("keydown", (e) => {
 
 /********* THEME *********/
 function applyTheme() {
-  const cfg = get("config");
+  const cfg = get("config") || { theme: "dark" };
   document.body.classList.remove("dark", "light");
   document.body.classList.add(cfg.theme || "dark");
 }
