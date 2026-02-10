@@ -1,6 +1,12 @@
 <!doctype html>
 <html lang="es">
   <head>
+    <!-- PWA -->
+    <link rel="manifest" href="manifest.json" />
+    <meta name="theme-color" content="#000000" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black" />
+    <meta name="apple-mobile-web-app-title" content="DFB" />
     <meta charset="UTF-8" />
     <title>Notes</title>
     <link rel="stylesheet" href="css/style.css" />
@@ -15,5 +21,18 @@
     </div>
 
     <script src="js/app.js"></script>
+    <!-- Service Worker -->
+    <script>
+      if ("serviceWorker" in navigator) {
+        window.addEventListener("load", () => {
+          navigator.serviceWorker
+            .register("/DFB-Prueba/sw.js")
+            .then((reg) =>
+              console.log("✅ Service Worker registrado:", reg.scope),
+            )
+            .catch((err) => console.log("❌ Error Service Worker:", err));
+        });
+      }
+    </script>
   </body>
 </html>
