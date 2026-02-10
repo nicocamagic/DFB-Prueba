@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <title>Settings</title>
+    <link rel="stylesheet" href="css/style.css" />
+  </head>
+  <body class="dark" onload="applyTheme()">
+    <h3>Número forzado</h3>
+    <input
+      type="number"
+      min="1"
+      max="100"
+      id="forcedNumber"
+      placeholder="1 - 100"
+    />
+    <h3>Palabra forzada</h3>
+    <input
+      type="text"
+      id="forcedWord"
+      placeholder="Escribe la palabra a forzar"
+    />
+
+    <script></script>
+
+    <h3>Tema</h3>
+    <button onclick="setTheme('dark')">Oscuro</button>
+    <button onclick="setTheme('light')">Claro</button>
+    <h3>Números</h3>
+    <button onclick="toggleNumbers()">ON / OFF</button>
+    <h3>Center Force</h3>
+    <button onclick="toggleCenter()">ON / OFF</button>
+    <hr />
+    <button onclick="saveSettings()">💾 Guardar configuración</button>
+    <button onclick="go('index.html')">⬅ Volver</button>
+
+    <br /><br />
+    <button onclick="go('index.html')">Cerrar</button>
+
+    <script src="js/app.js"></script>
+    <script>
+      const input = document.getElementById("forcedNumber");
+      input.value = get("config").forcedNumber;
+
+      input.onchange = () => {
+        const cfg = get("config");
+        cfg.forcedNumber = Number(input.value);
+        set("config", cfg);
+      };
+
+      // Inicializar con el valor guardado
+      const wordInput = document.getElementById("forcedWord");
+      wordInput.value = get("config").forcedWord || "";
+
+      // Guardar la palabra en config
+      wordInput.onchange = () => {
+        const cfg = get("config");
+        cfg.forcedWord = wordInput.value.trim();
+        set("config", cfg);
+      };
+    </script>
+  </body>
+</html>

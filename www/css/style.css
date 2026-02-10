@@ -1,0 +1,248 @@
+/* ===== RESET ===== */
+* {
+  box-sizing: border-box;
+}
+
+/* ===== BASE ===== */
+body {
+  margin: 0;
+  padding: 20px;
+  font-family:
+    system-ui,
+    -apple-system,
+    BlinkMacSystemFont,
+    "Segoe UI",
+    sans-serif;
+  background: var(--bg);
+  color: var(--text);
+  transition:
+    background 0.3s,
+    color 0.3s;
+}
+
+/* ===== THEMES ===== */
+body.dark {
+  --bg: #0f0f0f;
+  --card: #1b1b1b;
+  --text: #f2f2f2;
+  --muted: rgba(255, 255, 255, 0.5);
+  --accent: #d4af37;
+}
+
+body.light {
+  --bg: #f4f4f6;
+  --card: #ffffff;
+  --text: #111;
+  --muted: rgba(0, 0, 0, 0.5);
+  --accent: #d4af37;
+}
+
+/* ===== HOME ===== */
+.home {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  text-align: center;
+}
+
+.gold {
+  color: var(--accent);
+  font-size: 34px;
+  letter-spacing: 2px;
+}
+
+/* ===== BUTTONS ===== */
+button {
+  width: 220px;
+  padding: 14px;
+  border-radius: 14px;
+  border: none;
+  background: var(--accent);
+  color: #111;
+  font-size: 15px;
+  font-weight: 600;
+  cursor: pointer;
+  transition:
+    transform 0.15s,
+    opacity 0.15s;
+}
+
+button:active {
+  transform: scale(0.97);
+  opacity: 0.85;
+}
+
+/* ===== NOTES ===== */
+.notes-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+}
+
+.notes-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.note-row {
+  background: var(--card);
+  padding: 18px;
+  border-radius: 18px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.25);
+}
+
+.note-row strong {
+  font-size: 15px;
+}
+
+.note-row small {
+  font-size: 12px;
+  color: var(--muted);
+}
+
+/* ===== ICONS ===== */
+.delete-btn {
+  background: none;
+  border: none;
+  font-size: 18px;
+  color: #ff5c5c;
+  cursor: pointer;
+}
+
+/* ===== INPUTS ===== */
+input,
+textarea {
+  width: 100%;
+  padding: 14px;
+  border-radius: 14px;
+  border: none;
+  margin-bottom: 14px;
+  background: var(--card);
+  color: var(--text);
+  font-size: 14px;
+}
+
+textarea {
+  resize: none;
+  min-height: 120px;
+}
+
+/* ===== PERFORM ===== */
+.perform-container {
+  padding-top: 10px;
+}
+
+.card {
+  background: var(--card);
+  padding: 20px;
+  border-radius: 20px;
+  font-size: 17px;
+  margin-bottom: 16px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.35);
+}
+
+/* ===== NUMBERS ===== */
+.num {
+  opacity: 0.4;
+  margin-right: 6px;
+}
+
+/* ===== FORCED (SOLO DEBUG) ===== */
+.card[data-forced="true"] {
+  outline: 2px dashed var(--accent);
+}
+
+/* ===== FLOATING ADD BUTTON ===== */
+.fab {
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  width: 58px;
+  height: 58px;
+  border-radius: 50%;
+  font-size: 28px;
+  background: var(--accent);
+  color: #111;
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.45);
+}
+
+/* ===== MODAL ALERT ===== */
+.modal {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.6);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 100;
+}
+
+.modal-box {
+  background: var(--card);
+  padding: 26px;
+  border-radius: 22px;
+  width: 90%;
+  max-width: 380px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.45);
+}
+
+.modal-box h3 {
+  margin-top: 0;
+  margin-bottom: 16px;
+  font-size: 18px;
+  text-align: center;
+}
+
+.modal-actions {
+  display: flex;
+  justify-content: flex-end;
+  gap: 10px;
+}
+
+/* ===== UTILS ===== */
+.hidden {
+  display: none;
+}
+
+/* ===== TOP BAR ===== */
+.top-bar {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 18px;
+}
+
+.back-btn {
+  width: 42px;
+  height: 42px;
+  border-radius: 50%;
+  font-size: 20px;
+  background: var(--card);
+  color: var(--text);
+  border: none;
+  cursor: pointer;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.25);
+}
+
+.back-btn:active {
+  transform: scale(0.95);
+}
+
+.top-title {
+  flex: 1;
+  text-align: center;
+  font-size: 15px;
+  font-weight: 600;
+  opacity: 0.7;
+}

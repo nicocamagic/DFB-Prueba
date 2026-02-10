@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="utf-8"?>
+<widget id="com.magic.dfb"
+        version="1.0.0"
+        xmlns="http://www.w3.org/ns/widgets"
+        xmlns:cdv="http://cordova.apache.org/ns/1.0">
+
+  <name>DFB Pro</name>
+  <description>
+    Digital Force Bag – Offline Magic App
+  </description>
+
+  <author email="nico@magic.com" href="https://example.com">
+    Nico Magic
+  </author>
+
+  <!-- PÁGINA INICIAL -->
+  <content src="index.html" />
+
+  <!-- ACCESO -->
+  <access origin="*" />
+
+  <!-- ANDROID -->
+  <platform name="android">
+    <allow-intent href="market:*" />
+    <preference name="AndroidLaunchMode" value="singleTop" />
+    <preference name="android-minSdkVersion" value="22" />
+    <preference name="android-targetSdkVersion" value="33" />
+  </platform>
+
+  <!-- UI: modo show -->
+  <preference name="Fullscreen" value="true" />       <!-- Pantalla completa -->
+  <preference name="StatusBarOverlaysWebView" value="false" />
+  <preference name="StatusBarBackgroundColor" value="#000000" />
+
+  <!-- ORIENTACIÓN -->
+  <preference name="Orientation" value="portrait" />
+
+  <!-- PERMISOS -->
+  <feature name="Vibration">
+    <param name="android-package" value="org.apache.cordova.vibration" />
+  </feature>
+  <plugin name="cordova-plugin-insomnia" spec="^4.3.0" /> <!-- Evita que la pantalla se apague -->
+
+</widget>
